@@ -1,0 +1,24 @@
+OA 办公管理系统
+
+所用技术：
+	Struts2
+	Hibernate
+	Spring
+	Junit
+	Maven
+	...
+开发环境：	
+	系统：windows 8.1
+	服务器：tomcat 8.0
+	IDE : MyEclipse 2014
+	浏览器：Chrome
+	数据库：Mysql 5
+	
+代码规范：
+	编码：utf-8
+项目计划：
+	系统管理
+	权限
+	论坛
+	。。。
+	

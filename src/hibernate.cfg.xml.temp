@@ -1,0 +1,26 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 连接信息
+		 -->
+		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/hibernate_</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password"></property>
+		<!-- 数据本地语言 
+		-->
+		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<!-- 自动建表
+		 -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- 显示执行sql语句 
+		-->
+		<property name="show_sql">true</property>
+		<!-- 映射文件 
+		-->
+		<mapping resource="com/oa/entiry/Role.hbm.xml"></mapping>
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- 配置数据源 
+	<context:property-placeholder location="jdbc.properts" />
+	-->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/oa"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+		<!-- 管理配置 -->
+		<property name="maxIdle" value="20"></property>
+		<property name="minIdle" value="2"></property>
+		<property name="maxActive" value="30"></property>
+		<property name="initialSize" value="2"></property>
+		<property name="connectionProperties" value="useUnicode=true;characterEncoding=utf8"></property>
+	</bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- -->
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+			<!-- 
+				<prop key="hibernate.show_sql">true</prop>
+			 -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+			</props>
+
+		</property>
+		<!-- 注释用这个映射
+		<property name="packagesToScan">
+			<value></value>
+		</property>
+		 -->
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:com/oa/entity/*.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 扫描注解 -->
+	<context:component-scan base-package="com.oa"></context:component-scan>
+
+	<!-- 配置事物 -->
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
+	<!-- 配置aop	
+	<aop:config>
+		<aop:pointcut id="action" expression="execution(public * com.oa.view.action.*.*(..))"/>
+		<aop:aspect ref="logAdvice">
+			<aop:before method="before" pointcut-ref="action"/>
+		</aop:aspect>
+	
+	</aop:config>
+	 -->
+
+
+
+</beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.oa.entity">
+
+	<class name="Depertment" table="depertment_tab">
+		<id name="deptId" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="deptName" type="string" />
+		<property name="description" type="string" />
+		<!-- 映射下级 -->
+		<set name="deptDown" cascade="delete" lazy="false">
+			<key column="deptUpId"></key>
+			<one-to-many class="Depertment" />
+		</set>
+
+		<!-- 映射上级 -->
+		<many-to-one name="deptUp" column="deptUpId" class="Depertment" ></many-to-one>
+		<!-- 映射用户 -->
+		<set name="usrs">
+			<key column="deptId"></key>
+			<one-to-many class="User"/>
+		</set>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<include file="struts-conf.xml"></include>
+	<include file="struts-action.xml"></include>
+	<!-- 
+	
+			<result name="input">/WEB-INF/jsp/{1}Action/savePage.jsp</result>
+	<package name="struts" namespace="/" extends="struts-default">
+	 -->
+		<!-- 部门action
+		<action name="depertment_*" class="depertmentAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/depertmentAction/list.jsp</result>
+			<result name="savePage">/WEB-INF/jsp/depertmentAction/savePage.jsp</result>
+			<result name="toList" type="redirectAction">depertment_list?deptId=${deptUpId}</result>
+		</action>
+		 -->
+	<!-- 
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result name="list">/WEB-INF/jsp/{1}Action/list.jsp</result>
+			<result name="savePage">/WEB-INF/jsp/{1}Action/savePage.jsp</result>
+			<result name="toList" type="redirectAction">{1}_list</result>
+		</action>
+	</package>
+	 -->
+
+
+</struts>

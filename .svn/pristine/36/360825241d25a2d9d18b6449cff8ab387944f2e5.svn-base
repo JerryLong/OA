@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<!-- <result name="input">/WEB-INF/jsp/{1}Action/savePage.jsp</result> -->
+	<package name="struts" namespace="/" extends="struts-default">
+
+		<!-- 定义拦截器 -->
+		<interceptors>
+			<!-- 定义权限拦截器 -->
+			<interceptor name="checkPrivilege" class="com.oa.util.CheckPrivilegeInterceptor"></interceptor>
+			<interceptor-stack name="allStack">
+				<interceptor-ref name="checkPrivilege"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="allStack"></default-interceptor-ref>
+		<global-results>
+			<result name="loginPage">/WEB-INF/jsp/userAction/loginPage.jsp</result>
+			<result name="noPrivilegeError">noPrivilege.jsp</result>
+		</global-results>
+		
+		<!-- 论坛:版块action -->
+		<action name="forum_*" class="forumAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/forumAction/list.jsp</result>
+			<result name="show">/WEB-INF/jsp/forumAction/show.jsp</result>
+		</action>
+		
+		<!-- 论坛:主题action -->
+		<action name="topic_*" class="topicAction" method="{1}">
+			<result name="savePage">/WEB-INF/jsp/topicAction/savePage.jsp</result>
+			<result name="show">/WEB-INF/jsp/topicAction/show.jsp</result>
+			<result name="noTopic">/WEB-INF/jsp/topicAction/noTopic.jsp</result>
+			<result name="toForumShow" type="redirectAction">forum_show?id=${forumId}</result>
+			<result name="toShow" type="redirectAction">topic_show?id=${id}</result>
+		</action>
+		
+		<!-- 论坛:回帖action -->
+		<action name="reply_*" class="replyAction" method="{1}">
+			<result name="addPage">/WEB-INF/jsp/replyAction/savePage.jsp</result>
+			<result name="toTopicShow" type="redirectAction">topic_show?id=${topicId}</result>
+		</action>
+		
+			
+		<!-- 论坛管理action -->
+		<action name="forumManage_*" class="forumManageAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/forumManageAction/list.jsp</result>
+			<result name="savePage">/WEB-INF/jsp/forumManageAction/save.jsp</result>
+			<result name="toList" type="redirectAction">forumManage_list</result>
+		</action>
+		
+		<!-- 主页action -->
+		<action name="home_*" class="homeAction" method="{1}">
+			<result name="index">/WEB-INF/jsp/homeAction/index.jsp</result>
+			<result name="top">/WEB-INF/jsp/homeAction/top.jsp</result>
+			<result name="left">/WEB-INF/jsp/homeAction/left.jsp</result>
+			<result name="right">/WEB-INF/jsp/homeAction/right.jsp</result>
+			<result name="bottom">/WEB-INF/jsp/homeAction/bottom.jsp</result>
+		</action>
+
+		<!-- 部门action -->
+		<action name="depertment_*" class="depertmentAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/depertmentAction/list.jsp</result>
+			<result name="savePage">/WEB-INF/jsp/depertmentAction/savePage.jsp</result>
+			<result name="toList" type="redirectAction">depertment_list?deptId=${deptUpId}</result>
+		</action>
+		<!-- 用户action -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/userAction/list.jsp</result>
+			<result name="savePage">/WEB-INF/jsp/userAction/savePage.jsp</result>
+			<result name="logout">/WEB-INF/jsp/userAction/lngout.jsp</result>
+
+			<result name="toIndex" type="redirect">/index.jsp</result>
+			<result name="toList" type="redirectAction">user_list</result>
+		</action>
+
+		<!-- 角色action -->
+		<action name="role_*" class="roleAction" method="{1}">
+			<result name="setPrivilegePage">/WEB-INF/jsp/roleAction/setPrivilegePage.jsp
+			</result>
+			<result name="list">/WEB-INF/jsp/roleAction/list.jsp</result>
+			<result name="savePage">/WEB-INF/jsp/roleAction/savePage.jsp</result>
+			<result name="toList" type="redirectAction">role_list</result>
+		</action>
+
+	</package>
+
+
+</struts>

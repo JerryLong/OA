@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.oa.entity">
+
+	<class name="Reply" table="reply_tab">
+		<id name="id"  column="id">
+			<generator class="identity" />
+		</id>
+		<property name="title" length="100"></property>
+		<property name="content" type="text" length="65535"></property>
+		<property name="ipAddr" length="20"></property>
+		<property name="status" length="2"></property>
+		<property name="postTime" type="timestamp"></property>
+		<!-- 映射作者 -->
+		<many-to-one name="author" column="authorId" class="User"></many-to-one>
+		<!-- 映射主题 -->
+		<many-to-one name="topic" column="TopicId" class="Topic"></many-to-one>
+		
+	</class>
+
+</hibernate-mapping>

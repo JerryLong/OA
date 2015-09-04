@@ -1,0 +1,22 @@
+package com.oa.service;
+
+import java.util.List;
+
+import com.oa.entity.Forum;
+import com.oa.entity.Topic;
+
+public interface TopicService {
+
+	List<Topic> queryAll();
+
+	void save(Topic model);
+
+	Topic getById(Long id);
+
+	List<Topic> queryByForum(Forum forum);
+
+	void delete(Long id);
+
+	void update(Topic topic);
+
+}

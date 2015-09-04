@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.oa.entity">
+
+	<class name="Topic" table="topic_tab">
+		<id name="id"  column="id">
+			<generator class="identity" />
+		</id>
+		<property name="title" length="100"></property>
+		<property name="content" type="text" length="65535"></property>
+		<property name="ipAddr" length="20"></property>
+		<property name="status" length="2"></property>
+		<property name="postTime" type="timestamp" ></property>
+		<many-to-one name="author" class="User" column="authorId"></many-to-one>
+		
+		<property name="lastUpdateTime" type="timestamp"></property>
+		<property name="replyCount"></property>
+		<property name="type" length="2"></property>
+		<!-- 映射板块 -->
+		<many-to-one name="forum" column="forumId" class="Forum"></many-to-one>
+		<!-- 最后回复 -->
+		<many-to-one name="lastReply" column="lastReplyId" class="Reply"></many-to-one>
+		
+		<!-- 映射回复 -->
+		<set name="replys">
+			<key column="TopicId"></key>
+			<one-to-many class="Reply"/>
+		</set>		
+	</class>
+
+</hibernate-mapping>

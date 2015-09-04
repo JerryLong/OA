@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.oa.entity">
+
+	<class name="Privilege" table="privilege_tab">
+	<id name="id">
+		<generator class="identity"></generator>
+	</id>
+	<property name="name"></property>
+	<property name="url"></property>
+	<!-- 
+	<property name="ico"></property>
+	映射上级权限 -->	
+	<many-to-one name="parent" column="parentId"  class="Privilege" ></many-to-one>
+	
+	<!-- 映射下级权限 -->	
+	<set name="chlidren" lazy="false" order-by="id">
+		<key column="parentId"></key>
+		<one-to-many class="Privilege"/>
+	</set>
+	
+	<!-- 映射角色 -->	
+	<set name="roles" table="role_privilege_tab">
+		<key column="privilegeId"></key>
+		<many-to-many column="roleId" class="Role"></many-to-many>
+	</set>
+	</class>
+
+</hibernate-mapping>

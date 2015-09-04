@@ -1,0 +1,14 @@
+package com.oa.service;
+
+import java.util.List;
+
+import com.oa.entity.Reply;
+import com.oa.entity.Topic;
+
+public interface ReplyService {
+
+	List<Reply> queryByTopic(Topic topic);
+
+	void save(Reply model);
+
+}

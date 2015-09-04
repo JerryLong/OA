@@ -1,0 +1,49 @@
+package com.oa.view.action;
+
+import java.util.List;
+import java.util.Set;
+
+import javax.annotation.Resource;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import com.oa.entity.Forum;
+import com.oa.entity.Topic;
+import com.oa.service.ForumService;
+import com.oa.service.TopicService;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ModelDriven;
+
+@Controller
+@Scope("prototype")
+public class ForumAction implements ModelDriven<Forum>{
+
+	@Resource
+	private ForumService forumService;
+	@Resource
+	private TopicService topicService;
+	
+	private Forum model = new Forum();
+		
+	public String list(){
+		List<Forum> forumList = forumService.queryAll();
+		ActionContext.getContext().put("forumList",forumList);
+		
+		return "list";
+	}
+	public String show(){
+		Forum forum = forumService.getById(model.getId());
+		ActionContext.getContext().put("forum",forum);
+		List<Topic> topics = topicService.queryByForum(forum);
+		ActionContext.getContext().put("topicList",topics);
+
+		return "show";
+	}
+	
+	@Override
+	public Forum getModel() {
+		return model;
+	}
+	
+}

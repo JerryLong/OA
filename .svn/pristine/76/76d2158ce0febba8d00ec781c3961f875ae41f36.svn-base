@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA" name="sentity">
+  <packagedElement xmi:type="uml:Interface" xmi:id="_X7b6ULZ6EeSUHP1C42SeIQ" name="BaseDao">
+    <ownedOperation xmi:id="_r-s0ULZ6EeSUHP1C42SeIQ" name="save" isAbstract="true"/>
+    <ownedOperation xmi:id="_sLU7ELZ6EeSUHP1C42SeIQ" name="update"/>
+    <ownedOperation xmi:id="_XVIS0LZ7EeSUHP1C42SeIQ" name="delete"/>
+    <ownedOperation xmi:id="_XuOvULZ7EeSUHP1C42SeIQ" name="getById"/>
+    <ownedOperation xmi:id="_dQF1YLZ7EeSUHP1C42SeIQ" name="queryAll"/>
+    <ownedOperation xmi:id="_gtMOYLZ7EeSUHP1C42SeIQ" name="getByIds"/>
+    <nestedClassifier xmi:type="uml:Interface" xmi:id="_bXkC8LZ6EeSUHP1C42SeIQ" name="Interface1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_posw0LZ7EeSUHP1C42SeIQ" name="DepertmentDao" clientDependency="_cl1iALZ8EeSUHP1C42SeIQ">
+    <nestedClassifier xmi:type="uml:Interface" xmi:id="_qF8tgLZ7EeSUHP1C42SeIQ" name="Interface1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_qr56QLZ7EeSUHP1C42SeIQ" name="RoleDao" clientDependency="_arYnhLZ8EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_x_IQQLZ7EeSUHP1C42SeIQ" name="UserDao" clientDependency="_cAwfBLZ8EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2V-7wLZ7EeSUHP1C42SeIQ" name="BaseDaoImpl" clientDependency="_BBrpc7Z8EeSUHP1C42SeIQ">
+    <interfaceRealization xmi:id="_BBrpc7Z8EeSUHP1C42SeIQ" name="InterfaceRealization1" supplier="_X7b6ULZ6EeSUHP1C42SeIQ" client="_2V-7wLZ7EeSUHP1C42SeIQ" contract="_X7b6ULZ6EeSUHP1C42SeIQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_9FmOZrZ7EeSUHP1C42SeIQ" name="A_&lt;baseDaoImpl>_&lt;baseDao>" memberEnd="_9FmOZ7Z7EeSUHP1C42SeIQ _9FmOarZ7EeSUHP1C42SeIQ">
+    <ownedEnd xmi:id="_9FmOZ7Z7EeSUHP1C42SeIQ" name="baseDaoImpl" type="_2V-7wLZ7EeSUHP1C42SeIQ" association="_9FmOZrZ7EeSUHP1C42SeIQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9FmOaLZ7EeSUHP1C42SeIQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9FmOabZ7EeSUHP1C42SeIQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_9FmOarZ7EeSUHP1C42SeIQ" name="baseDao" type="_X7b6ULZ6EeSUHP1C42SeIQ" association="_9FmOZrZ7EeSUHP1C42SeIQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9FmOa7Z7EeSUHP1C42SeIQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9FmObLZ7EeSUHP1C42SeIQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LSJzsLZ8EeSUHP1C42SeIQ" name="RoleDaoImpl" clientDependency="_Z8aosLZ8EeSUHP1C42SeIQ _k5vR5LZ8EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_Z8aosLZ8EeSUHP1C42SeIQ" name="Dependency1" supplier="_qr56QLZ7EeSUHP1C42SeIQ" client="_LSJzsLZ8EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_arYnhLZ8EeSUHP1C42SeIQ" name="Dependency2" supplier="_X7b6ULZ6EeSUHP1C42SeIQ" client="_qr56QLZ7EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_cAwfBLZ8EeSUHP1C42SeIQ" name="Dependency3" supplier="_X7b6ULZ6EeSUHP1C42SeIQ" client="_x_IQQLZ7EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_cl1iALZ8EeSUHP1C42SeIQ" name="Dependency4" supplier="_X7b6ULZ6EeSUHP1C42SeIQ" client="_posw0LZ7EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hX3GkLZ8EeSUHP1C42SeIQ" name="UserDaoImpl" clientDependency="_jwM28LZ8EeSUHP1C42SeIQ _kRFWdLZ8EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_jwM28LZ8EeSUHP1C42SeIQ" name="Dependency5" supplier="_x_IQQLZ7EeSUHP1C42SeIQ" client="_hX3GkLZ8EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_kRFWdLZ8EeSUHP1C42SeIQ" name="Dependency6" supplier="_2V-7wLZ7EeSUHP1C42SeIQ" client="_hX3GkLZ8EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_k5vR5LZ8EeSUHP1C42SeIQ" name="Dependency7" supplier="_2V-7wLZ7EeSUHP1C42SeIQ" client="_LSJzsLZ8EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_72jy8LZ8EeSUHP1C42SeIQ" name="DepertmentDaoImpl" clientDependency="__7irVLZ8EeSUHP1C42SeIQ _AvVfxLZ9EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="__7irVLZ8EeSUHP1C42SeIQ" name="Dependency8" supplier="_2V-7wLZ7EeSUHP1C42SeIQ" client="_72jy8LZ8EeSUHP1C42SeIQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_AvVfxLZ9EeSUHP1C42SeIQ" name="Dependency9" supplier="_posw0LZ7EeSUHP1C42SeIQ" client="_72jy8LZ8EeSUHP1C42SeIQ"/>
+</uml:Model>

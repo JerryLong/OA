@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.oa.entity">
+
+	<class name="Role" table="role_tab">
+		<id name="id" type="long" column="roleid">
+			<generator class="identity" />
+		</id>
+		<property name="name" type="string" length="30" column="rolename" />
+		<property name="description" type="string" column="description" />
+		<!-- 映射用户 -->
+		<set name="users" table="user_role_tab">
+			<key column="roleId"></key>
+			<many-to-many column="userId" class="User"></many-to-many>
+		</set>
+		<!-- 映射权限 -->
+		<set name="privilege" table="role_privilege_tab"  lazy="false">
+			<key column="roleId"></key>
+			<many-to-many column="privilegeId" class="Privilege"></many-to-many>
+		</set>
+	</class>
+
+</hibernate-mapping>
